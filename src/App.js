@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { render } from 'react-dom';
 
-function App() {
+function Parent ({ name }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Parent</h1>
+      <Child name={name}/>
     </div>
   );
 }
+
+function Child ({ name }) {
+  return (
+    <div>
+      <h1>Child</h1>
+      <Grandchild name={name}/>
+    </div>
+  );
+}
+
+function Grandchild ({ name }) {
+  return (
+    <div>
+      <h1>Grandchild</h1>
+      <h3>Name: {name}</h3>
+    </div>
+  );
+}
+
+class App extends React.Component {
+  render() {
+    const name = 'Seif';
+
+    return (
+      <Parent name={name}/>
+
+    );
+  }
+}
+
+
 
 export default App;
